@@ -5,6 +5,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 
 import middlewares
+from commands import commands
 from config import CONFIG
 from core.connection import DATABASE
 from handlers import start, how_to_play, server, auth
@@ -36,6 +37,8 @@ async def main():
     dp.include_router(start.router)
     dp.include_router(how_to_play.router)
     dp.include_router(server.router)
+
+    await commands.set_commands(bot=bot)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await on_startup(bot)
