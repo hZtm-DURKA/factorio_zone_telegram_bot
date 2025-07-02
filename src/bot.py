@@ -34,7 +34,7 @@ async def main():
 
     dp.include_router(auth.router)
     dp.include_router(start.router)
-    dp.include_router(how_play.router)
+    dp.include_router(how_to_play.router)
     dp.include_router(server.router)
 
     await bot.delete_webhook(drop_pending_updates=True)
