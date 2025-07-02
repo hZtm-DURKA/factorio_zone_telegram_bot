@@ -7,7 +7,7 @@ from aiogram.client.default import DefaultBotProperties
 import middlewares
 from config import CONFIG
 from core.connection import DATABASE
-from handlers import start, how_play, server, auth
+from handlers import start, how_to_play, server, auth
 from misc.factorio_zone import WebSocketFactorioZone, FactorioZone
 
 logger = logging.getLogger(__name__)
@@ -46,10 +46,7 @@ async def main():
     await factorio_zone.connect()
     middlewares.setup(dispatcher=dp)
     DATABASE.engine.connect()
-    await dp.start_polling(
-        bot,
-        factorio_zone=factorio_zone,
-    )
+    await dp.start_polling(bot, factorio_zone=factorio_zone)
 
 
 if __name__ == "__main__":
